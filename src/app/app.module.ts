@@ -11,6 +11,8 @@ import { IngredientsComponent } from './ingredients/ingredients.component';
 import { NutritionComponent } from './nutrition/nutrition.component';
 import { RecipesComponent } from './recipes/recipes.component';
 import { AppRoutingModule } from './app-routing.module';
+import { HomeComponent } from './home/home.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -20,12 +22,14 @@ import { AppRoutingModule } from './app-routing.module';
     IngredientsComponent,
     NutritionComponent,
     RecipesComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AppRoutingModule,
+    FormsModule
     
 
   ],

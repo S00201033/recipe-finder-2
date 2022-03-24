@@ -1,1 +1,28 @@
-<p>ingredients works!</p>
+
+<h1>My Serverless Ingredient Functions</h1>
+<ul>
+  <li *ngFor="let Ingredient of MyIngredients">{{ Ingredient.id}} - {{Ingredient.title}} </li>
+</ul>
+
+<div>
+  <form (ngSubmit)="addIngredient()">
+    <div class='form-group'>
+      <label for="title">Ingredient Title</label>
+      <input type="text" class="form-control" placeholder="Enter title"
+      id="title" required
+      [(ngModel)]="titleValue" name="title">
+    </div>
+    <div class='form-group'>
+      
+
+      <li *ngFor="let Ingredient of MyIngredients">
+        <button class="btn" (click)="deleteIngredient(Ingredient.id)">Delete Ingredient</button>
+        {{Ingredient.id}} - {{Ingredient.title}}}}
+      </li>
+
+    </div>
+    <div class="btn-group">
+      <button type="submit" class="btn btn-success">Success</button>
+    </div>
+  </form>
+</div>

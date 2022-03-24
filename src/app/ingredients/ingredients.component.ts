@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FirebaseApiService } from '../firebase-api.service';
 
 @Component({
   selector: 'app-ingredients',
@@ -7,9 +8,37 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IngredientsComponent implements OnInit {
 
-  constructor() { }
+  title = 'Ingredient';
+  MyIngredients: any=[];
+  titleValue='';
 
-  ngOnInit(): void {
+
+  constructor(public firebaseApiService: FirebaseApiService){
+    
   }
+  ngOnInit(){
+this.loadIngredients();
+  }
+
+  loadIngredients() {
+    return this.firebaseApiService.getIngredients().subscribe((data: {})  =>{
+      this.MyIngredients=data;
+      this.titleValue='';
+    })
+  }
+  addIngredient() 
+  {
+    return this.firebaseApiService.addIngredient(this.titleValue).subscribe((data: {}) => {
+      this.MyIngredients=data;
+      this.titleValue='';
+    })
+  }
+  deleteIngredient(id:string) 
+  {
+    return this.firebaseApiService.delIngredient(id).subscribe((data: {}) => {
+      this.MyIngredients = data;
+    })
+  }
+
 
 }
