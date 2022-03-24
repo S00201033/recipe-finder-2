@@ -1,0 +1,31 @@
+<h1>Recipe Finder</h1>
+  <form>
+    <div class="form-group">
+      <input type="text" name="ingredient-name" class="form-control" #recipeName placeholder="Enter Ingredient">
+    </div>
+    <br>
+    <button (click)="getRecipeDetails(recipeName.value)" type="submit" class="btn btn-primary">Get Recipe
+      Details</button>
+  </form>
+
+  <div class="row bg-light mt-4 p-4" *ngIf="recipeData">
+    <div class="col-sm-4">
+      <div>
+        <h3>{{recipeData.Error}} </h3>
+      </div>
+      <div *ngIf="recipeData.recipe.image">
+        <img src="{{recipeData.recipe.image}}">
+      </div>
+    </div>
+
+
+    <div class="col-sm-8">
+      <div *ngIf="recipeData.recipe.label">
+        <h1>{{recipeData.recipe.label}} </h1>
+        <h2>Ingredients</h2>
+        <div *ngFor="let ingredientLine of recipeData.recipe.ingredientLines">
+          <li>{{ingredientLine}}</li>
+        </div>
+      </div>
+    </div>
+  </div>
