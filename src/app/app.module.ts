@@ -13,6 +13,8 @@ import { RecipesComponent } from './recipes/recipes.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { FormsModule } from '@angular/forms';
+import { ItemsComponent } from './items/items.component';
+import { ItemService } from './services/item.service';
 
 
 
@@ -23,6 +25,7 @@ import { FormsModule } from '@angular/forms';
     NutritionComponent,
     RecipesComponent,
     HomeComponent,
+    ItemsComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,7 @@ import { FormsModule } from '@angular/forms';
     
 
   ],
-  providers: [],
+  providers: [ItemService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

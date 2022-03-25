@@ -18,8 +18,9 @@
       <li *ngFor="let book of MyBooks">
         <button class="btn" (click)="deleteBook(book.id)">Delete Ingredient</button>
         <button class="btn" (click)="getRecipeDetails(book.id)">Find Recipe</button>
-
-        {{book.title}} - {{book.quantity}}
+        <button class="btn" href="">Find Recipe</button>
+        "href":"https://api.edamam.com/api/recipes/v2?q=carrot&app_key=b5be69c2f1ae6f0780d579c08d233dc1&_cont=CHcVQBtNNQphDmgVQntAEX4BYlJtAgsPQ2JIC2AValV3BgoCUXlSBGQbNlEmVgYBSmFGCjERMgQnBQVVQ2QRCjATMgZ1AwAVLnlSVSBMPkd5BgMbUSYRVTdgMgksRlpSAAcRXTVGcV84SU4%3D&type=public&app_id=9a8dde49"
+        {{book.title}} -  x{{book.quantity}}
       </li>
 
     </div>

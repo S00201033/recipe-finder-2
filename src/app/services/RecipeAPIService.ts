@@ -43,7 +43,11 @@ export class RecipeAPIService {
     ingredientLines.forEach(element => {
       ingredients.push(element);
     });
+    const data = {
+      [name]: {image}
+    };
 
+  
     var recipeData = {
       name: name,
       image: image,
@@ -51,6 +55,7 @@ export class RecipeAPIService {
     }
 
     return this.afs.collection('recipes').add(recipeData);
+    
   }
 
 
