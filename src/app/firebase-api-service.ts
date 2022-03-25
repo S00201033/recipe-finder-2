@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient,HttpHeaders} from '@angular/common/http'
-import {Ingredient}  from './ingredient';
+import {Book}  from './book';
 import { Observable} from 'rxjs';
 import { retry } from 'rxjs/operators';
 
@@ -20,24 +20,24 @@ httpOptions = {
 
   })
 }
-getIngredients():Observable<Ingredient> {
-  return this.http.get<Ingredient>(this.apiURL + '/getIngredients')
+getBooks():Observable<Book> {
+  return this.http.get<Book>(this.apiURL + '/getBooks')
   .pipe(
     retry(1),
     //catchError(this.handleError)
   )
 }
-addIngredient(title:string):Observable<Ingredient>{
+addBook(title:string , quantity:string):Observable<Book>{
 
-  return this.http.post<Ingredient>(this.apiURL + '/addIngredient?title=' + title,null)
+  return this.http.post<Book>(this.apiURL + '/addBook?title=' + title + '&quantity=' +quantity,null)
   .pipe(
     retry(1),
     //catchError(this.handleError)
   )
 
 }
-delIngredient(id:string): Observable<Ingredient> {
-  return this.http.delete<Ingredient>(this.apiURL +'/deleteIngredient?id=' +id)
+delBook(id:string): Observable<Book> {
+  return this.http.delete<Book>(this.apiURL +'/deleteBook?id=' +id)
   .pipe(
     retry(1),
 

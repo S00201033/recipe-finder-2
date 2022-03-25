@@ -11,7 +11,7 @@ const cors = require('cors')({ origin: true });
 
 
 
-const db = admin.database().ref('/recipe-finder-549fd');
+const db = admin.database().ref('/Recipe Finder');
 
 /*
 exports.helloWorld = functions.https.onRequest((request, response) => {
@@ -19,18 +19,19 @@ exports.helloWorld = functions.https.onRequest((request, response) => {
 });
 */
 
-const getIngredientsFromDatabase = (res) => {
-    let ingredients = [];
+const getBooksFromDatabase = (res) => {
+    let books = [];
     return db.on(
         'value',
         snapshot => {
-            snapshot.forEach(ingredient => {
-                ingredients.push({
-                    id: ingredient.key,
-                    title: ingredient.val().title,
+            snapshot.forEach(book => {
+                books.push({
+                    id: book.key,
+                    title: book.val().title,
+                    quantity: book.val().quantity
                 });
             });
-            res.status(200).json(ingredients);
+            res.status(200).json(books);
         },
         error => {
             res.status(error.code).json({
@@ -41,7 +42,7 @@ const getIngredientsFromDatabase = (res) => {
 
 };
 
-exports.addingredient = functions.https.onRequest((req, res) => {
+exports.addBook = functions.https.onRequest((req, res) => {
     return cors(req, res, () => {
         if (req.method !== 'POST') {
             return res.status(401).json({
@@ -49,12 +50,13 @@ exports.addingredient = functions.https.onRequest((req, res) => {
             });
         }
         const title = req.query.title;
-        db.push({ title, author });
-        getIngredientsFromDatabase(res);
+        const quantity = req.query.quantity;
+        db.push({ title, quantity });
+        getBooksFromDatabase(res);
     });
 });
 
-exports.deleteingredient = functions.https.onRequest((req, res) => {
+exports.deleteBook = functions.https.onRequest((req, res) => {
     return cors(req, res, () => {
       if(req.method !== 'DELETE') {
         return res.status(401).json({
@@ -62,19 +64,19 @@ exports.deleteingredient = functions.https.onRequest((req, res) => {
         })
       }
       const id = req.query.id;
-      //admin.database().ref(`/myingredients/${id}`).remove();
+      //admin.database().ref(`/mybooks/${id}`).remove();
       db.child(id).remove();
-      getIngredientsFromDatabase(res);
+      getBooksFromDatabase(res);
     });
   });
 
-exports.getingredients = functions.https.onRequest((req, res) => {
+exports.getBooks = functions.https.onRequest((req, res) => {
     return cors(req, res, () => {
         if (req.method !== 'GET') {
             return res.status(404).json({
                 message: 'Not allowed'
             })
         }
-        getIngredientsFromDatabase(res);
+        getBooksFromDatabase(res);
     });
 });
