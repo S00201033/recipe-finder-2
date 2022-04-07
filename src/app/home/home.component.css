@@ -11,7 +11,18 @@
     padding: 10px;
     height: 300px; /* Should be removed. Only for demonstration */
   }
-  
+  .column1{
+    float: left;
+    width: 33.33%;
+    padding: 10px;
+    height: 300px; /* Should be removed. Only for demonstration */
+  }
+  .column2 {
+    float: left;
+    width: 33.33%;
+    padding: 10px;
+    height: 300px; /* Should be removed. Only for demonstration */
+  }
   /* Clear floats after the columns */
   .row:after {
     content: "";
@@ -23,4 +34,25 @@
   }
   h2{
       text-align: center;
+  }
+  .column1
+  {
+    background-image: url('https://p7.hiclipart.com/preview/15/365/74/refrigerator-microwave-ovens-home-appliance-computer-icons-room-microwave.jpg');
+    background-repeat: no-repeat;
+background-position: center center;
+  }
+  .column
+  {
+    background-image: url('https://cdn.icon-icons.com/icons2/2551/PNG/512/search_icon_152764.png');
+    background-repeat: no-repeat;
+background-position: center center;
+  }
+  .column2
+  {
+    background-image: url('https://cdn-icons-png.flaticon.com/512/3565/3565418.png');
+    background-repeat: no-repeat;
+background-position: center center;
+  }
+  .row{
+padding-top: 70px;
   }

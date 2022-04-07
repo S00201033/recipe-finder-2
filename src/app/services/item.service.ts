@@ -11,7 +11,7 @@ export class ItemService {
   items: Observable<Item[]>;
   itemDoc: AngularFirestoreDocument<Item>;
 
-  constructor(public afs: AngularFirestore) { 
+  constructor(public afs: AngularFirestore) {
     //this.items = this.afs.collection('items').valueChanges();
 
     this.itemsCollection = this.afs.collection('items', ref => ref.orderBy('title','asc'));

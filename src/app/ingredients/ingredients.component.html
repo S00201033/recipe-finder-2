@@ -1,3 +1,6 @@
+<div class="bg-image" 
+     style="background-image: url('https://media.istockphoto.com/photos/refrigerator-on-tiled-floor-blue-wall-background-copy-space-3d-picture-id1056779410?k=20&m=1056779410&s=170667a&w=0&h=e2cv3yFxrnXTIkrP8KVAryMHm1_sJUi-Ra64BM_-tB8=');
+            height: 100vh">
 <h1>My Fridge</h1>
 
 
@@ -16,10 +19,8 @@
       [(ngModel)]="quantityValue" name="quantity">
 
       <li *ngFor="let book of MyBooks">
-        <button class="btn" (click)="deleteBook(book.id)">Delete Ingredient</button>
-        <button class="btn" (click)="getRecipeDetails(book.id)">Find Recipe</button>
-        <button class="btn" href="">Find Recipe</button>
-        "href":"https://api.edamam.com/api/recipes/v2?q=carrot&app_key=b5be69c2f1ae6f0780d579c08d233dc1&_cont=CHcVQBtNNQphDmgVQntAEX4BYlJtAgsPQ2JIC2AValV3BgoCUXlSBGQbNlEmVgYBSmFGCjERMgQnBQVVQ2QRCjATMgZ1AwAVLnlSVSBMPkd5BgMbUSYRVTdgMgksRlpSAAcRXTVGcV84SU4%3D&type=public&app_id=9a8dde49"
+        <button type="button" class="btn" (click)="deleteBook(book.id)">Delete Ingredient</button>
+        <button type="button" class="btn" routerLink="/recipes" [queryParams]="{prop: book.title}">Find Recipe</button>
         {{book.title}} -  x{{book.quantity}}
       </li>
 
@@ -28,4 +29,5 @@
       <button type="submit" class="btn btn-success">Success</button>
     </div>
   </form>
+</div>
 </div>
